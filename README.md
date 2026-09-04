@@ -1,34 +1,129 @@
 # GST Risk Manager — AI-Powered Risk Intelligence & Investigation Platform
-
+ 
 [![Backend Tests](https://img.shields.io/badge/Tests-65%2F65%20Passing-brightgreen.svg)]()
 [![Frontend Build](https://img.shields.io/badge/Vite-Production%20Ready-blue.svg)]()
 [![Track](https://img.shields.io/badge/Track-AI%20Risk%20Manager-purple.svg)]()
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)]()
 [![FastAPI](https://img.shields.io/badge/FastAPI-1.0.0-009688.svg)]()
 [![React](https://img.shields.io/badge/React-18-61dafb.svg)]()
-
-> **An enterprise-grade, explainable AI Risk Management and Investigation platform for commercial GST logistics.**  
+ 
+> **An enterprise-grade, explainable AI Risk Management and Investigation platform for commercial GST logistics.**
 > Cross-references Indian E-Way Bill (EWB) declarations with FASTag RFID toll transaction telemetry to detect, explain, investigate, and resolve transit tax fraud in real time.
-
+ 
 ---
-
+ 
 ## 🔐 Default Credentials
-
+ 
 | Role | Username | Password |
 | :--- | :--- | :--- |
 | **Administrator** | `admin` | `admin#123` |
-
+ 
 ---
-
+ 
 ## 🌟 Key Platform Capabilities
-
-- **Hybrid Risk Formulation:** Combines deterministic statutory fraud detection rules (70%) with unsupervised Isolation Forest ML anomaly scoring (30%).
-- **Explainable Evidence Engine:** Surfaces factual evidence chains, deduplicated risk clusters, and financial exposure context for every flagged vehicle.
-- **Conversational AI Risk Copilot:** Grounded in authoritative CBIC GST regulations via Retrieval-Augmented Generation (RAG) and equipped with safe, read-only risk inspection tools.
-- **Full-Lifecycle Case Management:** Creates formal investigation dockets (`GST-2026-NNNNNN`), captures immutable risk snapshots, manages evidence reviews, notes threads, and formal resolution workflows.
-- **Executive Risk Command Center:** High-level fleet KPI matrices, 30-day risk time-series trajectories, high-risk transit corridors, toll plaza diagnostics, regional state rankings, and executive dossiers.
-- **Enterprise Security & RBAC:** HttpOnly cookie sessions, instant session revocation, last-admin self-preservation, sliding-window rate limiting, and SHA-256 IP hashing.
-
+ 
+- **Hybrid Risk Formulation** — Combines deterministic statutory fraud detection rules (70%) with unsupervised Isolation Forest ML anomaly scoring (30%).
+- **Explainable Evidence Engine** — Surfaces factual evidence chains, deduplicated risk clusters, and financial exposure context for every flagged vehicle.
+- **Conversational AI Risk Copilot** — Grounded in authoritative CBIC GST regulations via Retrieval-Augmented Generation (RAG) and equipped with safe, read-only risk inspection tools.
+- **Full-Lifecycle Case Management** — Creates formal investigation dockets (`GST-2026-NNNNNN`), captures immutable risk snapshots, manages evidence reviews, notes threads, and formal resolution workflows.
+- **Executive Risk Command Center** — High-level fleet KPI matrices, 30-day risk time-series trajectories, high-risk transit corridors, toll plaza diagnostics, regional state rankings, and executive dossiers.
+- **Enterprise Security & RBAC** — HttpOnly cookie sessions, instant session revocation, last-admin self-preservation, sliding-window rate limiting, and SHA-256 IP hashing.
 ---
-
+ 
 ## 🏛️ System Architecture
+ 
+```
+E-WAY BILL + FASTAG RECORDS
+            │
+            ▼
+   14D FEATURE EXTRACTION
+            │
+            ▼
+┌───────────────────────────┬────────────────────────────┐
+│   Statutory Fraud Rules   │  Isolation Forest ML Model  │
+│  (Max 130 Score / 70%)    │  (Population Anomaly / 30%) │
+└─────────────┬──────────────┴──────────────┬─────────────┘
+              └──────────────┬───────────────┘
+                              ▼
+                     HYBRID RISK SCORE
+                              │
+                              ▼
+                   FACTUAL EVIDENCE CHAINS
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        ▼                     ▼                      ▼
+  AI RISK COPILOT      CASE MANAGEMENT         COMMAND CENTER
+  (Grounded RAG)   (GST-2026-NNNNNN Dockets)   (Fleet Analytics)
+```
+ 
+**Stack:** FastAPI (backend), SQLAlchemy + MySQL (data layer), React + Vite (frontend), Leaflet (mapping).
+ 
+---
+ 
+## 🚀 Quick Start (Docker Deployment)
+ 
+Launch the entire stack with a single command:
+ 
+```bash
+# 1. Configure environment
+cp .env.example .env
+ 
+# 2. Run with Docker Compose
+docker-compose up -d --build
+ 
+# 3. Access applications
+# Web Dashboard: http://localhost
+# Backend API & Docs: http://localhost:8000/docs
+```
+ 
+---
+ 
+## 💻 Manual Setup
+ 
+### 1. Backend (FastAPI)
+ 
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+uvicorn app.main:app --reload --port 8000
+```
+ 
+### 2. Frontend (React + Vite)
+ 
+```bash
+cd frontend
+npm install
+npm run dev
+```
+ 
+---
+ 
+## 🧪 Automated Test Suite (100% Passing)
+ 
+Run the backend test suite:
+ 
+```bash
+cd backend
+venv/bin/pytest -v
+```
+ 
+**Results:** `65 passed in 3.04s`
+ 
+Verify the frontend production bundle:
+ 
+```bash
+cd frontend
+npm run build
+```
+ 
+**Results:** `built in 2.85s with 0 errors`
+ 
+---
+ 
+## 📜 Regulatory Disclaimer
+ 
+**STATUTORY DISCLAIMER:** Risk scores, ML anomaly flags, and compliance indices generated by this system are analytical signals engineered to prioritize tax audits. They do not independently establish tax evasion, fraud, or legal liability without field inspection and statutory verification.
+ 
